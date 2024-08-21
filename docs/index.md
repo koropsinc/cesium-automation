@@ -32,6 +32,7 @@ Cesium Automation is a code workflow automation platform (as opposed to no-code 
 
 ## Signup and Use Cesium
 You can signup and use [Cesium at this link](https://app.cesiumautomation.com/).
+More information is available at our [marketing website](https://www.cesiumautomation.com/)
 
 # What use cases does Cesium Automation solve?
 Cesium Ops helps you solve 2 key problems: 

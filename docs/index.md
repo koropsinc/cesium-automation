@@ -30,6 +30,9 @@
 This repository documentation for Cesium Automation, a new age recurring tasks and IT workflow orchestration engine architected for the cloud.
 Cesium Automation is a code workflow automation platform (as opposed to no-code or low-code workflow automation platform) that allows you to write scripts in your favorite technologies and remotely execute them inside your environment in response to various events.
 
+## Signup and Use Cesium
+You can signup and use [Cesium at this link](https://app.cesiumautomation.com/).
+
 # What use cases does Cesium Automation solve?
 Cesium Ops helps you solve 2 key problems: 
 * Running recurring workflows which are supposed to run at specific time intervals.

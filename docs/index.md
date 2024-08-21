@@ -1,5 +1,5 @@
-- [Cesium Ops](#cesium-ops)
-- [What use cases does Cesium Ops solve?](#what-use-cases-does-cesium-ops-solve)
+- [Cesium Automation](#cesium-automation)
+- [What use cases does Cesium Automation solve?](#what-use-cases-does-cesium-automation-solve)
 - [Core Concepts](#core-concepts)
   - [Deployment Model](#deployment-model)
   - [Entities](#entities)
@@ -25,12 +25,12 @@
     - [Workflow Run Details](#workflow-run-details)
   - [Lifecyle of a workflow run](#lifecyle-of-a-workflow-run)
 
-# Cesium Ops
+# Cesium Automation
 
-This repository documentation for Cesium Ops, a new age recurring tasks and IT workflow orchestration engine architected for the cloud.
-Cesium Ops is a code workflow automation platform (as opposed to no-code or low-code workflow automation platform) that allows you to write scripts in your favorite technologies and remotely execute them inside your environment in response to various events.
+This repository documentation for Cesium Automation, a new age recurring tasks and IT workflow orchestration engine architected for the cloud.
+Cesium Automation is a code workflow automation platform (as opposed to no-code or low-code workflow automation platform) that allows you to write scripts in your favorite technologies and remotely execute them inside your environment in response to various events.
 
-# What use cases does Cesium Ops solve?
+# What use cases does Cesium Automation solve?
 Cesium Ops helps you solve 2 key problems: 
 * Running recurring workflows which are supposed to run at specific time intervals.
 * Running workflows for IT Service Request automation.

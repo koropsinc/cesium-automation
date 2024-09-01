@@ -2,7 +2,7 @@
 
 The most recent version of the task executor can be downloaded here.
 
-[Download latest tex](https://storage.googleapis.com/prod_tex_releases/tex-0.8-bin.zip)
+[Download latest tex](https://storage.googleapis.com/prod_sra_tex_releases/tex-0.11-bin.zip)
 
 
 

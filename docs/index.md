@@ -242,10 +242,11 @@ Attributes:
 ### PythonTask
 
 This task type is used to run python scripts. Tex currently only supports running python3 scripts. If your task requires specific python libraries, you can define a `requirements.txt` in the code artifact zip file which lists all dependencies in the standard format.
-Tex will create a virtual env for this workflow which live inside the workflow folder. The virtual env will be activated each time this task needs to be executed.
+Tex will create a virtual env for this workflow which live inside the workflow folder. The virtual env will be activated each time this task needs to be executed. If you use absolute paths where the python scripts are under a folder not in the same folder as the `requirements.txt`, you can specify the path to the virtual env folder to be used for the script.
 
 The attributes of a python task are: 
 * `script` (Required): The script to the python script that needs to be executed. This can be an absolute path to a file already on the machine where tex runs or a relative path to the python script inside the code artifact zip file.
+* `venvPath` (Required): The full path to the venv location to be used for this task. The 
 * `args` (optional): an array of strings that are passed to the bash script as parameters.
 
 Requirements:

@@ -299,3 +299,100 @@ A workflow run goes through the following lifecycle:
 - Failed: The workflow execution failed due to an error.
 - Succeeded: The workflow execution completed successfully.
 - Expired: If a workflow is not pickedup for execution with 4 hours for any reason (like tex being down), the worklfow is marked as `Expired` and is not pickedup for execution. 
+
+
+# Tenant Applications
+Cesium allows you to create apps that can be used to invoke workflows on your own.
+
+## Creating an application
+To create an application, navigate to settings and then to the appliactions settings.
+Click on the create new TenantApp. Enter a name and description
+Once an app is created it shows up in the list with an `appId` and an `appSecret`
+
+## Login and invocation of APIs
+ALl APIs require a bearer token for authencation and authorization.
+To get a bearer token, you must do a login first.
+To login, you need to send a POST request to this URL:
+```
+https://app.cesiumautomation.com/cesium/api/v1/app/login
+POST BODY:
+{
+    "tenantRefId":"542691f2-b6bf-49ee-a9f5-8b43f6339515",
+    "appId":"l9l7thqgak",
+    "appSecret": "A8FInA3MQdBpf0aINsPi"
+}
+```
+
+The response for this will included a bearer JWT token like this:
+```
+{
+    "tenantRefId": "542691f2-b6bf-1234-5678-910asad1213sada",
+    "bearerToken": "Bearer abcdefghisjasadada.1231780safhajfjkar812930hdioasDHJSHAjdhad0900u9ue21u9eusdAHLDASDhh303241239489djaSD.JbtTQLMN9XY-LGPp4VdLjaA6UcwYf-PyykAAy1huf8I8IL5z8hTtxKBRAdpyJ771NGastH5Rt4jJhF_Zzg-hvQ"
+}
+```
+
+Extract this bearer token and use it.
+An example of executing a workflow looks like this:
+```
+URL: https://app.cesiumautomation.com/cesium/api/graphql
+Headers:
+Authorization: "Bearer abcdefghisjasadada.1231780safhajfjkar812930hdioasDHJSHAjdhad0900u9ue21u9eusdAHLDASDhh303241239489djaSD.JbtTQLMN9XY-LGPp4VdLjaA6UcwYf-asadadIASIDHhnka1231311aAdasad-hvQ"
+Method: POST
+
+Graphql Query:
+mutation($workflowId:String!,
+$desc:String, $inputs:[InputKeyValuePair]){
+  runWorkflowNow(workflowId:$workflowId, description: $desc,
+  inputs:$inputs){
+    success
+    result {
+      __typename
+      ... on WFRun {
+        runId
+        scheduledTime
+      }
+    }
+    errors{
+      errorCode
+      errorMessage
+    }
+    
+  }
+}
+
+Variables:
+{
+  "workflowId": "9kl2nwtcef",
+  "desc": "Run from API",
+  "inputs": [
+    {
+      "name": "testInput",
+      "value": "Some APIInput"
+    }
+  ]
+}
+
+```
+
+Use your favorite graphql client for your language to send this request. Or create a simple POST request with the variables direcrly substitued to make the GraphQL call.
+
+If this call succeeds, you should get a response like this:
+```
+{
+  "data": {
+    "runWorkflowNow": {
+      "success": true,
+      "result": {
+        "__typename": "WFRun",
+        "runId": "d35f8ec9-4ca4-42bc-87e2-5b57dab5650c",
+        "scheduledTime": "2024-12-16T08:42:32Z"
+      },
+      "errors": null
+    }
+  }
+}
+```
+If there are errors, they will be enumerated under error.
+
+### Relogin
+The JWT token is valid for a fixed duration of time and will expire after some time. This will give you a response of 403 forbidden. When this happens, just do a relogin and get a new bearer token.
